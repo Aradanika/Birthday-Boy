@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Baby Manto</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background-color: #f4e9dc;
+      color: #5e4b3c;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #8b6f47;
+    }
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      text-align: center;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #c9a66b;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      color: white;
+      transition: transform 0.2s;
+    }
+    button:hover {
+      transform: scale(1.1);
+    }
+    .popup {
+      position: absolute;
+      background-color: #fff7ec;
+      border: 2px solid #d8b88c;
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: none;
+      z-index: 10;
+      max-width: 300px;
+    }
+    .heart {
+      position: absolute;
+      color: #e57373;
+      font-size: 24px;
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-200px); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Happy Birthday, Baby Manto!</h1>
+  <p>To my dearest baby, my sayang, the one who makes my heart do a little happy dance every day—this is your special day, and I made you this little pop-up love zone. Tap the button below and let the birthday magic (and a bit of my weird humor) begin!</p>
+  <button onclick="showPopup(event)">Click me, baby!</button>
+  
+  <div class="popup" id="popup">
+    <strong>Surprise!</strong><br>
+    You're officially older, but also officially cuter. Don't worry, you age like fine wine. Love you always, sayang.
+  </div>
+
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/03/audio_3a67d8f3f4.mp3?filename=love-jazz-110624.mp3" type="audio/mpeg">
+    Your browser does not support the audio tag.
+  </audio>
+
+  <script>
+    function showPopup(e) {
+      const popup = document.getElementById('popup');
+      popup.style.display = 'block';
+      popup.style.left = (e.clientX - 100) + 'px';
+      popup.style.top = (e.clientY - 100) + 'px';
+
+      for (let i = 0; i < 8; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = '♥';
+        heart.style.left = Math.random() * window.innerWidth + 'px';
+        heart.style.top = window.innerHeight + 'px';
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 3000);
+      }
+    }
+  </script>
+</body>
+</html>
